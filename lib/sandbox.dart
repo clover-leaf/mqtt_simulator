@@ -1,3 +1,4 @@
+import 'dart:io';
 import 'dart:math';
 
 import 'package:sandbox/gateway_client.dart';
@@ -22,6 +23,7 @@ Future<void> main() async {
           topic: 'phongaaa',
           retain: false,
           qos: 1);
+      sleep(Duration(seconds: 1));
     }
     // a.disconnect();
   });
