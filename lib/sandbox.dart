@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:sandbox/gateway_client.dart';
 
 Future<void> main() async {
@@ -13,7 +15,14 @@ Future<void> main() async {
 
   await a.connect().then((value) {
     // a.subscribe(topic: 'phongooo', qos: 1);
-    a.published(payload: "1", topic: 'phongaaa', retain: false, qos: 1);
-    a.disconnect();
+    while (true) {
+      final random = Random().nextInt(10) + 20;
+      a.published(
+          payload: '{"value": $random}',
+          topic: 'phongaaa',
+          retain: false,
+          qos: 1);
+    }
+    // a.disconnect();
   });
 }
